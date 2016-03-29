@@ -1,0 +1,287 @@
+
+/** 
+ * Setup the slider on bottom half of screen of plug-menu
+ */
+
+/* Set the height to be of its container */
+.slider{
+  height: inherit;
+}
+.box{
+  height: inherit;
+  position: relative;
+}
+/* Give colors to the background */
+.connects{
+  background: #1F1F21;
+}
+.feed{
+  background: #1F1F21;
+}
+
+
+/* Change the color of header bar to be transparent */
+ion-header-bar.bar-stable.bar.bar-header{
+  background: #4CD964;
+}
+ion-side-menu > ion-header-bar.bar-stable.bar.bar-header{
+  background: #1F1F21;
+}
+
+/**
+ * Change the color of the side menu icon to 
+ * be more noticeable
+ */
+button.button.button-icon.button-clear.ion-navicon {
+  color: #1F1F21;
+}
+
+/**
+ * Define the layout for the main template page
+ */
+.scroll{
+  height: 100%;
+}
+.container{
+  height: 50%;
+}
+.plug-btn, .information{
+  height: 100%;
+}
+.plug-btn{
+  background: #4CD964;
+}
+.information{
+  /* neutral color background to indicate 
+   * end of silder is reached
+   */
+  background: #1F1F21;
+}
+
+/** 
+ * Define the avatar profile series page
+ */
+.row{
+  height: 40%;
+}
+.avatar{
+  display: block;
+  margin-top: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: auto;
+  border-radius: 50%;
+}
+.name{
+  text-align: center;
+  color: white;
+}
+
+/**
+ *  Logo-style shazam button
+ */
+/* Set up the button container*/
+.button-animation{
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10%;
+}
+
+/* Circular div acting as the plug-btn */
+div#plug-btn{
+  position: fixed;
+  background: rgba(100 ,100,100,.5);  
+  border-radius: 50%;
+  width: 200px; height: 200px;
+  z-index: 2;
+}
+#plug-btn > h1 {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Define the red ball */
+div#redball {
+  position: fixed;  
+  border: 20px solid red;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  width: 200px; height: 200px;
+  transform-origin: center; 
+  z-index: 0;
+}
+/* Define the blue ball */
+div#blueball{
+  position: fixed;
+  border: 20px solid blue;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  width: 200px; height: 200px;
+  transform-origin: center
+  z-index: -2;
+}
+/* Define the green ball */
+div#greenball{
+  position: fixed;
+  border: 20px solid green;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  width: 200px; height: 200px;
+  transform-origin: center
+  z-index: -3;
+}
+/* Define the black ball */
+div#blackball {  
+  border: 20px solid black;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  width: 200px; height: 200px;
+  transform-origin: center; 
+  z-index: -4;
+}
+/* Define our animations for the rotating arc pieces */
+@keyframes red-circle { 
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
+}
+@keyframes blue-circle { 
+  from {-webkit-transform: rotate(360deg);}
+  to {-webkit-transform: rotate(0deg);}
+}
+/* Apply certain animation to certian arc pieces */
+div#redball {
+  animation: red-circle 3s infinite linear; 
+}
+div#blueball{
+  animation: blue-circle 5s infinite linear;
+}
+div#greenball{
+  animation: blue-circle 7s infinite linear;
+}
+div#blackball{
+  animation: red-circle 5s infinite linear;
+} 
+
+/* Set up the animation ball to better scaled on smaller
+ * such as iphone 4
+ */
+@media only screen and (max-width: 320px) {
+
+  /**
+   *  Logo-style shazam button
+   */
+  /* Set up the button container*/
+  .button-animation{
+    max-width: 175px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+  }
+
+  /* Circular div acting as the plug-btn */
+  div#plug-btn{
+    position: fixed;
+    background: rgba(100 ,100,100,.5);  
+    border-radius: 50%;
+    width: 175px; height: 175px;
+    z-index: 2;
+  }
+  #plug-btn > h1 {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Define the red ball */
+  div#redball {
+    position: fixed;  
+    border: 20px solid red;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    width: 175px; height: 175px;
+    transform-origin: center; 
+    z-index: 0;
+  }
+  /* Define the blue ball */
+  div#blueball{
+    position: fixed;
+    border: 20px solid blue;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    width: 175px; height: 175px;
+    transform-origin: center
+    z-index: -2;
+  }
+  /* Define the green ball */
+  div#greenball{
+    position: fixed;
+    border: 20px solid green;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    width: 175px; height: 175px;
+    transform-origin: center
+    z-index: -3;
+  }
+  /* Define the black ball */
+  div#blackball {  
+    border: 20px solid black;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    width: 175px; height: 175px;
+    transform-origin: center; 
+    z-index: -4;
+  }
+  /* Define our animations for the rotating arc pieces */
+  @keyframes red-circle { 
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+  }
+  @keyframes blue-circle { 
+    from {-webkit-transform: rotate(360deg);}
+    to {-webkit-transform: rotate(0deg);}
+  }
+  /* Apply certain animation to certian arc pieces */
+  div#redball {
+    animation: red-circle 3s infinite linear; 
+  }
+  div#blueball{
+    animation: blue-circle 5s infinite linear;
+  }
+  div#greenball{
+    animation: blue-circle 7s infinite linear;
+  }
+  div#blackball{
+    animation: red-circle 5s infinite linear;
+  }
+  /* Change the positioning to work on iphone 5 */
+  @media only screen and (min-height: 568px) {
+    .button-animation{
+      padding-top: 12.5%;
+    } 
+  }
+}
+
+

@@ -1,0 +1,63 @@
+<ion-view>
+	<ion-content scroll="false">
+		<div class="container">
+			<div class="plug-btn">
+				<div class="button-animation">
+					<div id="plug-btn" class="ball" ng-click="openModal()">
+						<h1>Logo</h1>
+					</div>
+					<div id="redball" class="ball">
+					</div>
+					<div id="blueball" class="ball">
+					</div>
+					<div id="greenball" class="ball">
+					</div>
+					<div id="blackball" class="ball">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="information">
+				<ion-slide-box on-slide-changed="slideHasChanged($index)">
+					<ion-slide>
+						<div class="box connects">
+							<div class="row">
+								<div class="col-25" ng-repeat="profile in profiles" ng-click="profileLoad(profile.id)">
+									<img class="avatar" src="{{profile.face}}">
+									<p class="name">{{profile.name}}</p>
+								</div>
+							</div>
+						</div>
+					</ion-slide>
+					<ion-slide>
+						<div class="box feed">
+						<ion-scroll direction="y">
+							<ion-list>
+								<div class="list card">
+
+								  <div class="item item-avatar item-icon-right">
+								    <img src="img/adam.jpg">
+								    <h2>Marty McFly</h2>
+								    <i class="icon ion-social-facebook"></i>
+								  </div>
+								  <div class="item item-body">
+								    <p>
+										I like to give a shoutout to my homie khan academy for helping me pass my stats final even though i never to went to lecture this whole quarter for math 186.
+								    </p>
+								    <p>
+								      <a href="#" class="subdued">1 Like</a>
+								      <a href="#" class="subdued">5 Comments</a>
+								    </p>
+								  </div>
+
+								</div>
+							</ion-list>
+						</ion-scroll>
+					</ion-slide>
+				</ion-slide-box>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+<div class="modal image-modal">
+  <ion-pane class="transparent">
+    <h5 style="text-align: center; padding-top: 30px">Select the social networks to request from</h5>
+    <h5 style="text-align: center;">{{plugUser.name}}</h5>
+    <img style="border-radius: 50%; height: 100px; width: 100px; display: block; margin-left: auto; margin-right: auto; margin-bottom: 15px;" src="{{plugUser.face}}">
+    <ion-scroll>
+    <ion-list>
+      <ion-checkbox class="item-icon-right" ng-model="filter.blue" ng-repeat="network in networks">{{network.network}} <i class="icon {{network.class}}"></i>
+      </ion-checkbox>
+    </ion-list>
+    </ion-scroll>
+    <button class="button button-block button-dark" ng-click="closeRequest()">Request</button>
+
+  </ion-pane>
+</div>

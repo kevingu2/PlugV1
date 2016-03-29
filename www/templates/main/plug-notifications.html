@@ -1,0 +1,23 @@
+<ion-view>
+	<ion-content>
+		<h5 style="text-align: center">These users want to connect with you</h5>
+
+		<div class="list receive-list">
+			<ion-item ng-repeat="user in users" class="item-avatar">
+	    		<img src="{{user.face}}">
+	    		<h2>{{user.name}}</h2>
+			</ion-item>
+		</div>
+	</ion-content>
+	<div style="position: absolute; bottom: 0px; width: 100%">
+        <div>
+			<div class="row">
+				<div class="col">
+					<button class="button button-block button-dark signin" ng-click="back()">
+						Ok
+					</button>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</ion-view>

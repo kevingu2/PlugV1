@@ -1,0 +1,12 @@
+<ion-view title="Filter">
+	<ion-content>
+		<ion-list>
+
+			<ion-checkbox class="item-icon-right" ng-model="network.filter" ng-repeat="network in networks">
+				{{network.network}}
+			    <i class="icon {{network.class}}"></i>
+			</ion-checkbox>
+
+		</ion-list>
+	</ion-content>
+</ion-view>

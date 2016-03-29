@@ -1,0 +1,23 @@
+/* Lower the gap between the two login buttons */
+.signin{
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+/* Change the background to logo color */
+.login{
+	background-color: #4CD964;
+}
+
+/* Add padding on the top of the logo */
+.logo-container{
+	padding-top: 50px;
+}
+
+/* Move the login buttons up from the bottom
+ * of the login page
+ */
+.login-button-container{
+	padding-bottom: 50px;
+}
+
