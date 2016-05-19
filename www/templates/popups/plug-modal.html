@@ -5,8 +5,12 @@
     <img style="border-radius: 50%; height: 100px; width: 100px; display: block; margin-left: auto; margin-right: auto; margin-bottom: 15px;" src="{{plugUser.face}}">
     <ion-scroll>
     <ion-list>
-      <ion-checkbox class="item-icon-right" ng-model="filter.blue" ng-repeat="network in networks">{{network.network}} <i class="icon {{network.class}}"></i>
-      </ion-checkbox>
+      <div ng-repeat="network in networks">
+        <ion-checkbox class="item-icon-right" ng-model="network.request">
+          {{network.network}} 
+          <i class="icon {{network.class}}"></i>
+        </ion-checkbox>
+      </div>
     </ion-list>
     </ion-scroll>
     <button class="button button-block button-dark" ng-click="closeRequest()">Request</button>

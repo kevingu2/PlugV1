@@ -1,4 +1,10 @@
 {
-  "name": "plug_v1",
-  "app_id": "3e94757e"
+  	"name": "plug_v1",
+  "app_id": "3e94757e",
+	"proxies": [
+		{
+			"path": "/api",
+			"proxyUrl": "http://plug-mobile.herokuapp.com/api"
+		}
+	]
 }

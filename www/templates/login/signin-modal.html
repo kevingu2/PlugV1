@@ -8,11 +8,11 @@
 		<div class="list login-form">
 		  <label class="item item-input">
 		    <span class="input-label">Username</span>
-		    <input type="text">
+		    <input type="text" ng-model="loginCred.email">
 		  </label>
 		  <label class="item item-input">
 		    <span class="input-label">Password</span>
-		    <input type="password">
+		    <input type="password" ng-model="loginCred.password">
 		  </label>
 		</div>
 		<button class="button button-full button-positive item" ng-click="submit()">

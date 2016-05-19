@@ -6,6 +6,7 @@
 			<ion-item ng-repeat="user in users" class="item-avatar">
 	    		<img src="{{user.face}}">
 	    		<h2>{{user.name}}</h2>
+			    <button class="button button-dark" style="float: right;" ng-click="openRequest(user.id)">Add</button>
 			</ion-item>
 		</div>
 	</ion-content>

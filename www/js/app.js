@@ -26,6 +26,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .run(function($rootScope, Chats) {
   // main user profile
   $rootScope.user = Chats.get(0);
+  $rootScope.token = null;
+  $rootScope.message = null;
 })
 
 

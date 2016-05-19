@@ -6,9 +6,9 @@ angular.module('starter.services', [])
   // Some fake testing data
   var chats = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    name: 'Kevin Gu',
+    lastTest: 'This isnt going to work anymore',
+    face: 'img/kevin.jpg'
   }, {
     id: 1,
     name: 'Max Lynx',
@@ -29,6 +29,11 @@ angular.module('starter.services', [])
     name: 'Mike Harrington',
     lastText: 'This is wicked good ice cream.',
     face: 'img/mike.png'
+  },{
+    id: 5,
+    name: 'Ben Sparrow',
+    lastText: 'You on your way?',
+    face: 'img/ben.png'
   }];
 
   return {
@@ -60,27 +65,32 @@ angular.module('starter.services', [])
     'id': 0,
     'class': 'ion-social-facebook',
     'network': 'Facebook',
-    'filter': true
+    'filter': true,
+    'request': false
   },{
     'id': 1,
     'class': 'ion-social-instagram',
     'network': 'Instagram',
-    'filter': true
+    'filter': true,
+    'request': false
   },{
     'id': 2,
     'class': 'ion-social-linkedin',
     'network': 'LinkedIn',
-    'filter': true
+    'filter': true,
+    'request': false
   },{
     'id': 3,
     'class': 'ion-social-twitter',
     'network': 'Twitter',
-    'filter': true
+    'filter': true,
+    'request': false
   },{
     'id': 4,
     'class': 'ion-social-googleplus',
     'network': 'Google+',
-    'filter': true
+    'filter': true,
+    'request': false
   }];
 
   return {

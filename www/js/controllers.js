@@ -1,10 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $rootScope, Chats, Camera, 
-  $location, $ionicPopup, SocialNetworks, $rootScope, $ionicModal, $cordovaBarcodeScanner) {
+.controller('DashCtrl', function($scope, $rootScope, Chats, Camera, $http,
+  $location, $ionicPopup, SocialNetworks, $rootScope, $ionicModal, $cordovaBarcodeScanner, $timeout) {
 
   $scope.networks = SocialNetworks.all();
   $scope.user = $rootScope.user;
+  $scope.users = Chats.all();
+
 
   $scope.scanBarcode = function() {
       $cordovaBarcodeScanner.scan().then(function(imageData) {
@@ -17,30 +19,70 @@ angular.module('starter.controllers', [])
   };
 
 
-  $ionicModal.fromTemplateUrl('templates/popups/plug-match.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
+  $scope.connect = function() {
+    var date = new Date();
+    var coord = {
+      date: new Date(),
+      longitude: 32.881798, 
+      latitude: -117.241123
+    };
+
+    $http({
+          url: 'http://plug-mobile.herokuapp.com/api/requests',
+          method: "POST",
+          data: coord,
+          headers: {'Content-Type': 'application/json', 'Authorization': "Bearer " + $rootScope.token.data.value}
+      }).success(function (data, status, headers, config) {
+            $rootScope.message = data;
+
+          }).error(function (data, status, headers, config) {
+              $scope.status = status;
+          });
+
+
+    timer();
+  }
+  // Simulate notification
+  var cancelTime;
+  $scope.time = 5000;
+  var timer = function() {
+    // initiate the timer
+
+    // call this function after every 1000ms
+    cancelTime = $timeout(function() {
+      $scope.time = $scope.time -= 1000;
+      if ($scope.time <= 0) {
+        // simulate the nofication throug a popup or link
+        $location.path('/app/plug-notifications');
+
+        $http({
+          url: 'http://plug-mobile.herokuapp.com/api/requests?request_id=' + $rootScope.message.message._id,
+          method: "GET",
+          headers: {'Content-Type': 'application/json', 'Authorization': "Bearer " + $rootScope.token.data.value}
+        }).success(function (data, status, headers, config) {
+          console.log(data);
+
+        }).error(function (data, status, headers, config) {
+
+        });
+
+        return;
+      }
+      timer();
+    }, 1000);
   };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
+
+  $scope.$on('$ionicView.leave', function(){
+    console.log("Left this page");
+    $timeout.cancel(cancelTime);
   });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
+
+  // Go back to the previous view
+  $scope.back = function() {
+    $ionicHistory.goBack();
+  }
+
+
 
 
   $scope.getPhoto = function() {
@@ -88,19 +130,24 @@ angular.module('starter.controllers', [])
   }).then(function(modal) {
     $scope.request = modal;
   });
+
   $scope.openRequest = function(id) {
     $scope.plugUser = Chats.get(id);
 
     $scope.request.show();
   };
+
   $scope.closeRequest = function() {
+
     $scope.request.hide();
      var alertPopup = $ionicPopup.alert({
       title: 'Request sent!'
     });
 
-  
+     // Make the instagram request
   };
+
+
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
     $scope.request.remove();

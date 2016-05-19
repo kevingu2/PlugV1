@@ -5,7 +5,13 @@
  */
 angular.module('starter')
 
-.controller('LoginCtrl', function($scope, $ionicModal, $location) {
+.controller('LoginCtrl', function($scope, $ionicModal, $location, $http, $ionicPopup, $rootScope) {
+  $scope.loginCred = {
+    email: "",
+    password: ""
+  }
+
+
   $ionicModal.fromTemplateUrl('templates/login/signin-modal.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -60,8 +66,22 @@ angular.module('starter')
   // For now it doesn't authenticate
   // it just takes us to the main page
 	$scope.submit = function() {
-    $location.path("/app/home");
-    $scope.closeModal();
-    $scope.closeModalSignup();
+
+    console.log($scope.loginCred);
+
+    $http.post("http://plug-mobile.herokuapp.com/api/tokens", $scope.loginCred).success(function(data, status) {
+      if (data.status == "fail") {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Incorrect credentials!'
+        });      
+      }
+      else {
+        console.log(data);
+        $rootScope.token = data;
+        $location.path("/app/home");
+        $scope.closeModal();
+        $scope.closeModalSignup();
+      }
+    });
   }  
 })
